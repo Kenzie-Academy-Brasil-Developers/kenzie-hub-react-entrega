@@ -1,7 +1,9 @@
+import Details from '../../components/Details'
+
 export const Profile = () => {
-  return (
-    <>
-      <p>Perfil</p>
-    </>
-  );
-};
+	return (
+		<>
+			<Details />
+		</>
+	)
+}

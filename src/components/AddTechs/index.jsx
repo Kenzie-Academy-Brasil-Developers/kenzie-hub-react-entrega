@@ -4,16 +4,16 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-const EditTechs = () => {
+const AddTechs = () => {
 	const history = useHistory()
-	const [status, setStatus] = useState('')
-	const [techs, setTechs] = useState([])
+	const [status, setStatus] = useState('Iniciante')
 	const [token, setToken] = useState(() => {
 		const localToken = localStorage.getItem('token') || ''
 		return JSON.parse(localToken)
 	})
+	const config = { headers: { Authorization: `Bearer ${token}` } }
 
 	const schema = yup.object().shape({
 		title: yup.string().required('Nome da tecnologia obrigatório'),
@@ -26,21 +26,10 @@ const EditTechs = () => {
 		formState: { errors },
 	} = useForm({ resolver: yupResolver(schema) })
 
-	useEffect(() => {
-		axios
-			.get('https://kenziehub.herokuapp.com/users/techs', {
-				headers: { Authorization: `Bearer ${token}` },
-			})
-			.then((response) => setTechs([response.data]))
-			.catch((e) => console.log(e))
-	})
-
 	const handleForm = (data) => {
+		console.log(token, data)
 		axios
-			.post('https://kenziehub.herokuapp.com/users/techs', {
-				headers: { Authorization: `Bearer ${token}` },
-				data,
-			})
+			.post('https://kenziehub.herokuapp.com/users/techs', data, config)
 			.then((response) => {
 				history.push('/profile')
 			})
@@ -84,4 +73,4 @@ const EditTechs = () => {
 	)
 }
 
-export default EditTechs
+export default AddTechs

@@ -4,7 +4,7 @@ import { Signup } from '../pages/cadastro'
 import { Login } from '../pages/login'
 import { Profile } from '../pages/profile'
 import { Techs } from '../pages/techs'
-import { Works } from '../pages/works'
+import { Update } from '../pages/update/index'
 
 export const Routes = () => {
 	return (
@@ -24,8 +24,8 @@ export const Routes = () => {
 			<Route path='/techs'>
 				<Techs />
 			</Route>
-			<Route path='/works'>
-				<Works />
+			<Route path='/update'>
+				<Update />
 			</Route>
 		</Switch>
 	)

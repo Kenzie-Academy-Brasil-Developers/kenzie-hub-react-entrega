@@ -1,9 +1,9 @@
-import EditTechs from '../../components/EditTechs'
+import AddTechs from '../../components/AddTechs'
 
 export const Techs = () => {
 	return (
 		<>
-			<EditTechs />{' '}
+			<AddTechs />{' '}
 		</>
 	)
 }
